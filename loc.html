@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Person Location and Product ID</title>
+</head>
+<body>
+    <h1>Send Person Location and Product ID</h1>
+    <p>Click the button to get your location and send it along with a product ID as a GET request parameter.</p>
+
+    <!-- <button onclick="getLocationAndSendData()">Get Location and Send Data</button> -->
+
+    <script>
+        function getLocationAndSendData() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    // Get the latitude and longitude of the user's location
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    const params = new URLSearchParams(window.location.search);
+                    const productId = params.get('productId');
+                    console.log(productId)
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/json");
+
+                    var raw = {
+                    timestam: "2012-9-23",
+                    latitude: latitude,
+                    longitude: longitude
+                    };
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(raw)
+                    };
+
+                    fetch("http://localhost:3000/location", requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
+                     
+                    
+                }, function (error) {
+                    // Handle errors, e.g., user denies location access
+                    alert("Error getting location: " + error.message);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+            
+        }
+        getLocationAndSendData()
+    </script>
+</body>
+</html>
