@@ -21,9 +21,11 @@
                     console.log(productId)
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
+                    const currentDate = new Date();
+                    console.log(currentDate)
 
                     var raw = {
-                    timestam: "2012-9-23",
+                    timestam: currentDate,
                     latitude: latitude,
                     longitude: longitude
                     };
