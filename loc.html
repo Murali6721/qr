@@ -36,7 +36,7 @@
                         body: JSON.stringify(raw)
                     };
 
-                    fetch("http://localhost:3000/location", requestOptions)
+                    fetch("https://cf1f-45-112-31-81.ngrok.io/location", requestOptions)
                     .then(response => response.text())
                     .then(result => console.log(result))
                     .catch(error => console.log('error', error));
