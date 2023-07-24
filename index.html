@@ -22,7 +22,6 @@
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
                     const currentDate = new Date();
-                    console.log(typeof(currentDate))
                     // const dateString = currentDate.toISOString().slice(0, 10);
                     // console.log(dateString);
                     const utcOffsetInMilliseconds = 5.5 * 60 * 60 * 1000;
@@ -31,14 +30,11 @@
                     // Convert the IST datetime to a formatted string
                     const istDatetimeString = istDateTime.toISOString();
 
-                    console.log(istDatetimeString)
                     var raw = {
                     timestam: istDatetimeString.slice(0,-1),
                     latitude: latitude,
                     longitude: longitude
                     };
-                    console.log("Heaii timestamp in raw is"+typeof(raw.timestam))
-                    console.log(raw.timestam)
 
                     var requestOptions = {
                         method: 'POST',
@@ -61,6 +57,21 @@
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
+            const geocoder = new google.maps.Geocoder();
+
+            // Define the LatLng object with the provided latitude and longitude
+            const latLng = new google.maps.LatLng(latitude, longitude);
+
+            // Perform reverse geocoding
+            geocoder.geocode({ location: latLng }, (results, status) => {
+                if (status === "OK" && results[0]) {
+                const formattedAddress = results[0].formatted_address;
+                console.log(formattedAddress);
+                // Here, you have the formatted address based on the latitude and longitude
+                } else {
+                console.log("Reverse geocoding failed");
+    }
+  });
             
         }
         getLocationAndSendData()
