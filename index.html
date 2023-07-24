@@ -12,11 +12,36 @@
     <script>
         function getLocationAndSendData() {
             if ("geolocation" in navigator) {
+
                 navigator.geolocation.getCurrentPosition(function (position) {
                     // Get the latitude and longitude of the user's location
                     var latitude = position.coords.latitude;
                     var longitude = position.coords.longitude;
                     const params = new URLSearchParams(window.location.search);
+
+                    const userAgent = navigator.userAgent;
+
+                    // Check if the user is using Android
+                    const isAndroid = /Android/i.test(userAgent);
+
+                    // Check if the user is using iOS
+                    const isiOS = /iPhone|iPad|iPod/i.test(userAgent);
+
+                    // Check if the user is using any desktop platform (Windows, macOS, Linux)
+                    const isDesktop = !isAndroid && !isiOS;
+
+                    // Use the results as needed
+                    if (isAndroid) {
+                    console.log("User is using Android.");
+                    } else if (isiOS) {
+                    console.log("User is using iOS.");
+                    } else if (isDesktop) {
+                    console.log("User is using a desktop platform (Windows, macOS, Linux).");
+                    } else {
+                    console.log("User's platform could not be identified.");
+                    }
+
+
                     const productId = params.get('productId');
                     const productName = params.get('productName');
                     const serialCode = params.get('serialCode');
@@ -44,7 +69,8 @@
                     serial_code:serialCode,
                     batch_code:batchCode
                     };
-                    console.log(raw)
+                    console.log("Heaii timestamp in raw is"+typeof(raw.timestam))
+                    console.log(raw.timestam)
 
                     var requestOptions = {
                         method: 'POST',
@@ -54,7 +80,7 @@
                         body: JSON.stringify(raw)
                     };
 
-                    fetch("https://fcce-45-112-31-116.ngrok-free.app/products", requestOptions)
+                    fetch("https://f91d-45-112-31-89.ngrok-free.app/products", requestOptions)
                     .then(response => response.text())
                     .then(result => console.log(result))
                     .catch(error => console.log('error', error));
