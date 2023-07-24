@@ -20,6 +20,7 @@
                     const params = new URLSearchParams(window.location.search);
 
                     const userAgent = navigator.userAgent;
+                    let app;
 
                     // Check if the user is using Android
                     const isAndroid = /Android/i.test(userAgent);
@@ -33,9 +34,12 @@
                     // Use the results as needed
                     if (isAndroid) {
                     console.log("User is using Android.");
+                    app="Android"
                     } else if (isiOS) {
+                        app="iOS"
                     console.log("User is using iOS.");
                     } else if (isDesktop) {
+                        app="Desktop"
                     console.log("User is using a desktop platform (Windows, macOS, Linux).");
                     } else {
                     console.log("User's platform could not be identified.");
@@ -51,7 +55,6 @@
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
                     const currentDate = new Date();
-                    console.log(typeof(currentDate))
                     // const dateString = currentDate.toISOString().slice(0, 10);
                     // console.log(dateString);
                     const utcOffsetInMilliseconds = 5.5 * 60 * 60 * 1000;
@@ -60,17 +63,16 @@
                     // Convert the IST datetime to a formatted string
                     const istDatetimeString = istDateTime.toISOString();
 
-                    console.log(istDatetimeString)
                     var raw = {
                     timestam: istDatetimeString.slice(0,-1),
                     latitude: latitude,
                     longitude: longitude,
                     product_name:productName,
                     serial_code:serialCode,
-                    batch_code:batchCode
+                    batch_code:batchCode,
+                    app:app
                     };
-                    console.log("Heaii timestamp in raw is"+typeof(raw.timestam))
-                    console.log(raw.timestam)
+                    console.log(raw)
 
                     var requestOptions = {
                         method: 'POST',
@@ -80,7 +82,7 @@
                         body: JSON.stringify(raw)
                     };
 
-                    fetch("https://f91d-45-112-31-89.ngrok-free.app/products", requestOptions)
+                    fetch("https://fcce-45-112-31-116.ngrok-free.app/products", requestOptions)
                     .then(response => response.text())
                     .then(result => console.log(result))
                     .catch(error => console.log('error', error));
