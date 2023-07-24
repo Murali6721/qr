@@ -18,6 +18,12 @@
                     var longitude = position.coords.longitude;
                     const params = new URLSearchParams(window.location.search);
                     const productId = params.get('productId');
+                    const productName = params.get('productName');
+                    const serialCode = params.get('serialCode');
+                    const batchCode= params.get('batchCode');                   
+
+                    console.log(serialCode)
+                    console.log(batchCode)
                     console.log(productId)
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
