@@ -57,21 +57,6 @@
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
-            const geocoder = new google.maps.Geocoder();
-
-            // Define the LatLng object with the provided latitude and longitude
-            const latLng = new google.maps.LatLng(latitude, longitude);
-
-            // Perform reverse geocoding
-            geocoder.geocode({ location: latLng }, (results, status) => {
-                if (status === "OK" && results[0]) {
-                const formattedAddress = results[0].formatted_address;
-                console.log(formattedAddress);
-                // Here, you have the formatted address based on the latitude and longitude
-                } else {
-                console.log("Reverse geocoding failed");
-    }
-  });
             
         }
         getLocationAndSendData()
