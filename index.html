@@ -33,11 +33,12 @@
 
                     console.log(istDatetimeString)
                     var raw = {
-                    timestam: istDatetimeString,
+                    timestam: istDatetimeString.slice(0,-1),
                     latitude: latitude,
                     longitude: longitude
                     };
                     console.log("Heaii timestamp in raw is"+typeof(raw.timestam))
+                    console.log(raw.timestam)
 
                     var requestOptions = {
                         method: 'POST',
