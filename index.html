@@ -22,11 +22,18 @@
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
                     const currentDate = new Date();
-                    console.log(currentDate)
-                    console.log("Hello this is-"+typeof(currentDate))
+                    console.log(typeof(currentDate))
+                    // const dateString = currentDate.toISOString().slice(0, 10);
+                    // console.log(dateString);
+                    const utcOffsetInMilliseconds = 5.5 * 60 * 60 * 1000;
+                    const istDateTime = new Date(currentDate.getTime() + utcOffsetInMilliseconds);
 
+                    // Convert the IST datetime to a formatted string
+                    const istDatetimeString = istDateTime.toISOString();
+
+                    console.log(typeof(istDatetimeString))
                     var raw = {
-                    timestam: currentDate,
+                    timestam: istDatetimeString,
                     latitude: latitude,
                     longitude: longitude
                     };
