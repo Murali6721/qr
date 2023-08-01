@@ -1,0 +1,126 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #a8d3e4;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: white;
+  color:rgb(208, 47, 47) ;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.product-img{
+  height: 100vh;
+  width: 100px;
+
+}
+
+nav {
+  background-color: green;
+  padding: 5px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+nav a:hover {
+  background-color: white;
+  color: black;
+}
+
+main {
+  padding: 20px;
+}
+
+.product-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Set the gap (margin) between the two product images and video */
+}
+
+.product-item {
+  text-align: center;
+  width: 400px; /* Set a fixed width for the product items to make them the same size */
+  height: 400px; /* Set a fixed height for the product items to make them the same size */
+  overflow: scroll; /* Hide any overflow, so the images don't extend beyond the container */
+}
+
+.product-item img {
+  width: 100%;
+  height: 100%;
+   /* Resize images to cover their container while maintaining aspect ratio */
+}
+
+.product-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Resize the video to cover its container while maintaining aspect ratio */
+}
+
+/* Styling for the text box */
+.textbox {
+  flex-basis: 60%; /* The text box takes up 60% of the available space */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.textbox h3 {
+  color: #555;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.textbox p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.textbox ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.textbox ul li {
+  margin-bottom: 8px;
+}
+/* ... other CSS rules ... */
+
+/* ... other CSS rules ... */
+
+footer {
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
