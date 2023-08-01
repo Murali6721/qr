@@ -2,10 +2,74 @@
 <html>
 <head>
     <title>Send Person Location and Product ID</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWISSNUTRICIA Website</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Send Person Location and Product ID</h1>
-    <p>Click the button to get your location and send it along with a product ID as a GET request parameter.</p>
+    <!-- <h1>Send Person Location and Product ID</h1>
+    <p>Click the button to get your location and send it along with a product ID as a GET request parameter.</p> -->
+    <h2  className="text-sm title-font text-gray-500 tracking-widest">Swissnutricia</h2>
+    <h1  className="text-gray-900 text-3xl title-font font-medium mb-1">Procura</h1>
+    
+        <header>
+            <h1>Procura XP</h1>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Manufacturing</a></li>
+                <li><a href="#">Packaging</a></li>
+                <li><a href="#">Shipping</a></li>
+            </ul>
+        </nav>
+    
+        <main>
+            <!-- Add product images and video container -->
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="images/procura-img.jpeg" class="product-imgs" alt="Product Image 1">
+                    <p class="product-description">Product 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="product-item">
+                    <img src="images/product-2.jpeg" alt="Product Image 2">
+                    <p class="product-description">Product 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="product-item">
+                    <h2>Product Video</h2>
+                    <video width="400" controls>
+                        <source src="images/video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+    
+            <!-- Text Box -->
+            <div class="textbox">
+                <p>
+                    Is a High Protein formula with a ‘Powerful Blend’ of Egg, Milk & Soya protein. Hence has a very rich Amino Acid profile as compared to any other product. Procura XP is also enriched with all vitamins and Minerals as per RDA thus supports normal functions, growth and development of the body during recovery state.
+                    <br><br>
+                    Need for High Protein Formulas?
+                    <br>
+                    Hospitalized patients are often in a high catabolic state. Many patients are undernourished and underweight on admission. Such patients need high amounts of protein and energy to combat infection and illness and to recover from open wounds due to injury, burns or surgery. Cancer causes cachexia (weight loss) and is the major cause of death in these patients. Tuberculosis and Respiratory disease is also another major condition which require high protein diet. Totally “Sugar Free” and hence can safely consumed by ‘Diabetics’
+                </p>
+                <h3>Highlights of the product: (Sugar Free Procura XP)</h3>
+                <ul>
+                    <li>Offers a blend of Egg, Milk & Soy protein each providing a “Time Release” effect, thus speeding up recovery time in debilitating conditions like trauma and infections.</li>
+                    <li>Branch Chain Amino Acids (BCAA) has anti-catabolic and Anti-Cachetic action hence supports faster tissue regeneration thereby preventing muscle loss.</li>
+                    <li>Vitamins and minerals as immunoboosters, supports to overcome fatigue and weakness and resetting the Physiological functions of the body.</li>
+                    <li>Totally ‘Sugar Free’ hence can be safely prescribed to diabetics. Hence significantly improves ‘Quality of Life’ of your patients.</li>
+                </ul>
+                <!-- Add other sections here (Testimonials, Research, News, Recipes, etc.) -->
+            </div>
+        </main>
+    
+        
+    
+        <script src="script.js"></script>
+    
 
     <!-- <button onclick="getLocationAndSendData()">Get Location and Send Data</button> -->
 
@@ -55,6 +119,7 @@
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
                     const currentDate = new Date();
+                    console.log(typeof(currentDate))
                     // const dateString = currentDate.toISOString().slice(0, 10);
                     // console.log(dateString);
                     const utcOffsetInMilliseconds = 5.5 * 60 * 60 * 1000;
@@ -63,6 +128,7 @@
                     // Convert the IST datetime to a formatted string
                     const istDatetimeString = istDateTime.toISOString();
 
+                    console.log(istDatetimeString)
                     var raw = {
                     timestam: istDatetimeString.slice(0,-1),
                     latitude: latitude,
@@ -72,7 +138,8 @@
                     batch_code:batchCode,
                     app:app
                     };
-                    console.log(raw)
+                    console.log("Heaii timestamp in raw is"+typeof(raw.timestam))
+                    console.log(raw.timestam)
 
                     var requestOptions = {
                         method: 'POST',
@@ -82,7 +149,7 @@
                         body: JSON.stringify(raw)
                     };
 
-                    fetch("https://7683-45-112-31-96.ngrok-free.app/products", requestOptions)
+                    fetch("https://fcce-45-112-31-116.ngrok-free.app/products", requestOptions)
                     .then(response => response.text())
                     .then(result => console.log(result))
                     .catch(error => console.log('error', error));
