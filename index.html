@@ -1,201 +1,108 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Send Person Location and Product ID</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SWISSNUTRICIA Website</title>
-        <link rel="stylesheet" href="index.css">
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPXS8P445T"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-QPXS8P445T');
-        </script>
-    </head>
-<body>
-    <!-- <h1>Send Person Location and Product ID</h1>
-    <p>Click the button to get your location and send it along with a product ID as a GET request parameter.</p> -->
-    <h2  className="text-sm title-font text-gray-500 tracking-widest">Swissnutricia</h2>
-    <h1  className="text-gray-900 text-3xl title-font font-medium mb-1">Procura</h1>
-    
-        <header>
-            <h1>Procura XP</h1>
-        </header>
-        
-        <nav>
-            <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Manufacturing</a></li>
-                <li><a href="#">Packaging</a></li>
-                <li><a href="#">Shipping</a></li>
-            </ul>
-        </nav>
-    
-        <main>
-            <!-- Add product images and video container -->
-            <div class="product-container">
-                <div class="product-item">
-                    <img src="images/procura-img.jpeg" class="product-imgs" alt="Product Image 1">
-                    <p class="product-description">Product 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="product-item">
-                    <img src="images/product-2.jpeg" alt="Product Image 2">
-                    <p class="product-description">Product 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="product-item">
-                    <h2>Product Video</h2>
-                    <video width="400" controls>
-                        <source src="images/video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-    
-            <!-- Text Box -->
-            <div class="textbox">
-                <p>
-                    Is a High Protein formula with a ‘Powerful Blend’ of Egg, Milk & Soya protein. Hence has a very rich Amino Acid profile as compared to any other product. Procura XP is also enriched with all vitamins and Minerals as per RDA thus supports normal functions, growth and development of the body during recovery state.
-                    <br><br>
-                    Need for High Protein Formulas?
-                    <br>
-                    Hospitalized patients are often in a high catabolic state. Many patients are undernourished and underweight on admission. Such patients need high amounts of protein and energy to combat infection and illness and to recover from open wounds due to injury, burns or surgery. Cancer causes cachexia (weight loss) and is the major cause of death in these patients. Tuberculosis and Respiratory disease is also another major condition which require high protein diet. Totally “Sugar Free” and hence can safely consumed by ‘Diabetics’
-                </p>
-                <h3>Highlights of the product: (Sugar Free Procura XP)</h3>
-                <ul>
-                    <li>Offers a blend of Egg, Milk & Soy protein each providing a “Time Release” effect, thus speeding up recovery time in debilitating conditions like trauma and infections.</li>
-                    <li>Branch Chain Amino Acids (BCAA) has anti-catabolic and Anti-Cachetic action hence supports faster tissue regeneration thereby preventing muscle loss.</li>
-                    <li>Vitamins and minerals as immunoboosters, supports to overcome fatigue and weakness and resetting the Physiological functions of the body.</li>
-                    <li>Totally ‘Sugar Free’ hence can be safely prescribed to diabetics. Hence significantly improves ‘Quality of Life’ of your patients.</li>
-                </ul>
-                <!-- Add other sections here (Testimonials, Research, News, Recipes, etc.) -->
-            </div>
-        </main>
-    
-        
-    
-        <script src="script.js"></script>
-    
+// dashboard.js
 
-    <!-- <button onclick="getLocationAndSendData()">Get Location and Send Data</button> -->
+document.addEventListener('DOMContentLoaded', function() {
+    const div = document.getElementById("dataContainer");
+    let addRecord=(data) =>{
 
-    <script>
-
-        timeDiff =(starttime,endTime)=>{
-            var duration = endTime - starttime;
-            // Convert time difference to seconds
-            var seconds = Math.floor(duration / 1000);
-
-            // Calculate the number of hours
-            var hours = Math.floor(seconds / 3600);
-            seconds %= 3600;
-
-            // Calculate the number of minutes
-            var minutes = Math.floor(seconds / 60);
-            seconds %= 60;
-            const timeDifference=hours + "H:" + minutes + "M:" + seconds+"S"
-            console.log(timeDifference)
-            return timeDifference
-        }
-        uploadDetailsInDatabase=(raw)=>{
-            var requestOptions = {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(raw)
+        console.log(data)
+        function formatDate(dateString) {
+            const options = {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+              hour12: true
             };
-
-            fetch(" https://b178-45-112-31-106.ngrok-free.app/products", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', options);
         }
+          
+          // Example usage:
+          const originalDate = data.date;
+          const formattedDate = formatDate(originalDate);
+          // console.log(formattedDate)
+        const infoEl=document.getElementById("infoId")
+        // console.log(infoEl)
 
-        function getLocationAndSendData(raw) {
-            if ("geolocation" in navigator) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    // Get the latitude and longitude of the user's location
-                    var latitude = position.coords.latitude;
-                    var longitude = position.coords.longitude;
-                    const params = new URLSearchParams(window.location.search);
+        var trEl = document.createElement("TR");
+        // trEl.setAttribute("id", "myTr");
 
-                    const userAgent = navigator.userAgent;
-                    let app;
+        var y = document.createElement("TD");
+        // y.setAttribute("id", "myTr");
+    
+        const productDetailsEl=document.createElement("div");
+        productDetailsEl.setAttribute('style', 'width: 200px;');
+        const userNameEl=document.createElement("p");
+        const scanTimeEl=document.createElement("p");
+        scanTimeEl.setAttribute('style', 'width: 170px;');
+        const LocationEl=document.createElement("p");
+        LocationEl.setAttribute('style', 'width: 170px;');
+        const UserIdEl=document.createElement("p");
+        const AppEl=document.createElement("p");
+        const ResultEl=document.createElement("p");
+        
+        // productDetailsEl.textContent="product name:Horlicks serial No:1234 commisioned :12th july"
+        
+        const productNameEl = document.createElement("p")
+        const serialNoEl = document.createElement("p")
+        const productgtinEl = document.createElement("p")
 
-                    // Check if the user is using Android
-                    const isAndroid = /Android/i.test(userAgent);
+        
+        
+        
+        // console.log(data)
+        productNameEl.textContent="Name:"+data.product_name
+        serialNoEl.textContent="S.No:"+data.serial_no
+        productgtinEl.textContent="Batch No:"+data.batch_code
+        userNameEl.textContent="XXXXXX";
+        scanTimeEl.textContent=formattedDate;
+        LocationEl.textContent=`latitude:${data.latitude}, longitude:${data.longitude}`;
+        UserIdEl.textContent=data.duration;
+        AppEl.textContent=data.app;
+        ResultEl.textContent=data.result;
+        
+        productDetailsEl.appendChild(productNameEl)
+        productDetailsEl.appendChild(serialNoEl)
+        productDetailsEl.appendChild(productgtinEl)
+        y.appendChild(productDetailsEl)//,userNameEl,scanTimeEl,LocationEl,UserIdEl,AppEl,ResultEl
+        y.appendChild(userNameEl)
+        y.appendChild(scanTimeEl)
+        y.appendChild(LocationEl)
+        y.appendChild(UserIdEl)
+        y.appendChild(AppEl)
+        y.appendChild(ResultEl)
+        y.classList.add('row-container')
+        y.setAttribute('style','background-color:#fff0b3')
+        productDetailsEl.classList.add("data")
+        userNameEl.classList.add('data')
+        scanTimeEl.classList.add('data')
+        LocationEl.classList.add('data')
+        UserIdEl.classList.add('data')
+        AppEl.classList.add('data')
+        ResultEl.classList.add('data')
 
-                    // Check if the user is using iOS
-                    const isiOS = /iPhone|iPad|iPod/i.test(userAgent);
+        trEl.appendChild(y)
+        infoEl.append(trEl)
+    }
+    
+ 
+    let url = "http://localhost:3030/products";
+    let options = {
+      method: "GET"
+    };
 
-                    // Check if the user is using any desktop platform (Windows, macOS, Linux)
-                    const isDesktop = !isAndroid && !isiOS;
-
-                    // Use the results as needed
-                    if (isAndroid) {
-                    app="Android"
-                    } else if (isiOS) {
-                        app="iOS"
-                    
-                    } else if (isDesktop) {
-                        app="Desktop"
-                    } else {
-                    console.log("User's platform could not be identified.");
-                    }
-
-
-                    const productId = params.get('productId');
-                    const productName = params.get('productName');
-                    const serialCode = params.get('serialCode');
-                    const batchCode= params.get('batchCode');                   
-                    var myHeaders = new Headers();
-                    myHeaders.append("Content-Type", "application/json");
-                    let currentDate = new Date();
-                    // console.log(currentDate)
-                    // const dateString = currentDate.toISOString().slice(0, 10);
-                    // console.log(dateString);
-                    const utcOffsetInMilliseconds = 5.5 * 60 * 60 * 1000;
-                    const istDateTime = new Date(currentDate.getTime() + utcOffsetInMilliseconds);
-
-                    // Convert the IST datetime to a formatted string
-                    const istDatetimeString = istDateTime.toISOString();
-
-                    
-                    raw.timestam = istDatetimeString.slice(0,-1),
-                    raw.latitude=latitude,
-                    raw.longitude =longitude,
-                    raw.product_name =productName,
-                    raw.serial_code=serialCode,
-                    raw.batch_code=batchCode,
-                    raw.app=app
-
-                }, function (error) { 
-                    // Handle errors, e.g., user denies location access
-                    alert("Error getting location: " + error.message);
-                });
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        }
-
-        var raw = {
-        };
-        let starttime= new Date()
-
-
-        getLocationAndSendData(raw)
-
-        window.addEventListener('beforeunload', function(event){
-            // Call the function to send the exit time to the server
-            endTime=new Date()
-            raw.duration=timeDiff(starttime,endTime)
-            uploadDetailsInDatabase(raw)
-
-        });
-    </script>
-</body>
-</html>
+    fetch(url, options)
+        .then(response => response.json())
+        .then(data => display(data))
+        .catch(error => console.error('Error:', error));
+    
+    let display = (data)=>{
+        data.forEach(record => {
+                addRecord(record)
+            });
+    }
+    
+    
+  });
