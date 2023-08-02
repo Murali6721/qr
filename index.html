@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Send Person Location and Product ID</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWISSNUTRICIA Website</title>
-    <link rel="stylesheet" href="index.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPXS8P445T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-QPXS8P445T');
-    </script>
-</head>
+    <head>
+        <title>Send Person Location and Product ID</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SWISSNUTRICIA Website</title>
+        <link rel="stylesheet" href="index.css">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPXS8P445T"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-QPXS8P445T');
+        </script>
+    </head>
 <body>
     <!-- <h1>Send Person Location and Product ID</h1>
     <p>Click the button to get your location and send it along with a product ID as a GET request parameter.</p> -->
@@ -83,9 +83,40 @@
     <!-- <button onclick="getLocationAndSendData()">Get Location and Send Data</button> -->
 
     <script>
-        function getLocationAndSendData() {
-            if ("geolocation" in navigator) {
 
+        timeDiff =(starttime,endTime)=>{
+            var duration = endTime - starttime;
+            // Convert time difference to seconds
+            var seconds = Math.floor(duration / 1000);
+
+            // Calculate the number of hours
+            var hours = Math.floor(seconds / 3600);
+            seconds %= 3600;
+
+            // Calculate the number of minutes
+            var minutes = Math.floor(seconds / 60);
+            seconds %= 60;
+            const timeDifference=hours + "H:" + minutes + "M:" + seconds+"S"
+            console.log(timeDifference)
+            return timeDifference
+        }
+        uploadDetailsInDatabase=(raw)=>{
+            var requestOptions = {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(raw)
+            };
+
+            fetch(" https://b178-45-112-31-106.ngrok-free.app/products", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+        }
+
+        function getLocationAndSendData(raw) {
+            if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     // Get the latitude and longitude of the user's location
                     var latitude = position.coords.latitude;
@@ -106,14 +137,12 @@
 
                     // Use the results as needed
                     if (isAndroid) {
-                    console.log("User is using Android.");
                     app="Android"
                     } else if (isiOS) {
                         app="iOS"
-                    console.log("User is using iOS.");
+                    
                     } else if (isDesktop) {
                         app="Desktop"
-                    console.log("User is using a desktop platform (Windows, macOS, Linux).");
                     } else {
                     console.log("User's platform could not be identified.");
                     }
@@ -123,12 +152,10 @@
                     const productName = params.get('productName');
                     const serialCode = params.get('serialCode');
                     const batchCode= params.get('batchCode');                   
-                    console.log(batchCode)
-                    console.log(productId)
                     var myHeaders = new Headers();
                     myHeaders.append("Content-Type", "application/json");
-                    const currentDate = new Date();
-                    console.log(typeof(currentDate))
+                    let currentDate = new Date();
+                    // console.log(currentDate)
                     // const dateString = currentDate.toISOString().slice(0, 10);
                     // console.log(dateString);
                     const utcOffsetInMilliseconds = 5.5 * 60 * 60 * 1000;
@@ -137,33 +164,15 @@
                     // Convert the IST datetime to a formatted string
                     const istDatetimeString = istDateTime.toISOString();
 
-                    console.log(istDatetimeString)
-                    var raw = {
-                    timestam: istDatetimeString.slice(0,-1),
-                    latitude: latitude,
-                    longitude: longitude,
-                    product_name:productName,
-                    serial_code:serialCode,
-                    batch_code:batchCode,
-                    app:app
-                    };
-                    console.log("Heaii timestamp in raw is"+typeof(raw.timestam))
-                    console.log(raw.timestam)
-
-                    var requestOptions = {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(raw)
-                    };
-
-                    fetch("https://fcce-45-112-31-116.ngrok-free.app/products", requestOptions)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
-                     
                     
+                    raw.timestam = istDatetimeString.slice(0,-1),
+                    raw.latitude=latitude,
+                    raw.longitude =longitude,
+                    raw.product_name =productName,
+                    raw.serial_code=serialCode,
+                    raw.batch_code=batchCode,
+                    raw.app=app
+
                 }, function (error) { 
                     // Handle errors, e.g., user denies location access
                     alert("Error getting location: " + error.message);
@@ -172,7 +181,21 @@
                 alert("Geolocation is not supported by this browser.");
             }
         }
-        getLocationAndSendData()
+
+        var raw = {
+        };
+        let starttime= new Date()
+
+
+        getLocationAndSendData(raw)
+
+        window.addEventListener('beforeunload', function(event){
+            // Call the function to send the exit time to the server
+            endTime=new Date()
+            raw.duration=timeDiff(starttime,endTime)
+            uploadDetailsInDatabase(raw)
+
+        });
     </script>
 </body>
 </html>
