@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Send Person Location and Product ID</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SWISSNUTRICIA Website</title>
         <link rel="stylesheet" href="index.css">
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPXS8P445T"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TCUBE-AI</title>
+        <!-- Add Tailwind CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -17,69 +18,254 @@
         </script>
     </head>
 <body>
-    <!-- <h1>Send Person Location and Product ID</h1>
-    <p>Click the button to get your location and send it along with a product ID as a GET request parameter.</p> -->
-    <h2  className="text-sm title-font text-gray-500 tracking-widest">Swissnutricia</h2>
-    <h1  className="text-gray-900 text-3xl title-font font-medium mb-1">Procura</h1>
     
-        <header>
-            <h1>Procura XP</h1>
-        </header>
-        
-        <nav>
-            <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Manufacturing</a></li>
-                <li><a href="#">Packaging</a></li>
-                <li><a href="#">Shipping</a></li>
-            </ul>
-        </nav>
     
-        <main>
-            <!-- Add product images and video container -->
-            <div class="product-container">
-                <div class="product-item">
-                    <img src="images/procura-img.jpeg" class="product-imgs" alt="Product Image 1">
-                    <p class="product-description">Product 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="product-item">
-                    <img src="images/product-2.jpeg" alt="Product Image 2">
-                    <p class="product-description">Product 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="product-item">
-                    <h2>Product Video</h2>
-                    <video width="400" controls>
-                        <source src="images/video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+    <nav class="navbar-custom p-4">
+        <div class="container mx-auto">
+          <div class="flex items-center justify-between" >
+            <div class="text-white text-xl font-bold">
+            TCUBE-AI
             </div>
-    
-            <!-- Text Box -->
-            <div class="textbox">
-                <p>
-                    Is a High Protein formula with a ‘Powerful Blend’ of Egg, Milk & Soya protein. Hence has a very rich Amino Acid profile as compared to any other product. Procura XP is also enriched with all vitamins and Minerals as per RDA thus supports normal functions, growth and development of the body during recovery state.
-                    <br><br>
-                    Need for High Protein Formulas?
-                    <br>
-                    Hospitalized patients are often in a high catabolic state. Many patients are undernourished and underweight on admission. Such patients need high amounts of protein and energy to combat infection and illness and to recover from open wounds due to injury, burns or surgery. Cancer causes cachexia (weight loss) and is the major cause of death in these patients. Tuberculosis and Respiratory disease is also another major condition which require high protein diet. Totally “Sugar Free” and hence can safely consumed by ‘Diabetics’
-                </p>
-                <h3>Highlights of the product: (Sugar Free Procura XP)</h3>
-                <ul>
-                    <li>Offers a blend of Egg, Milk & Soy protein each providing a “Time Release” effect, thus speeding up recovery time in debilitating conditions like trauma and infections.</li>
-                    <li>Branch Chain Amino Acids (BCAA) has anti-catabolic and Anti-Cachetic action hence supports faster tissue regeneration thereby preventing muscle loss.</li>
-                    <li>Vitamins and minerals as immunoboosters, supports to overcome fatigue and weakness and resetting the Physiological functions of the body.</li>
-                    <li>Totally ‘Sugar Free’ hence can be safely prescribed to diabetics. Hence significantly improves ‘Quality of Life’ of your patients.</li>
-                </ul>
-                <!-- Add other sections here (Testimonials, Research, News, Recipes, etc.) -->
+            <div class="hidden md:flex space-x-4">
+              <a href="#" class="text-white hover:text-gray-300">Home</a>
+              <a href="#" class="text-white hover:text-gray-300">Shipping</a>
+              <a href="#productDetailsId" class="text-white hover:text-gray-300">About</a>
+              <a href="#reviewsContainerId" class="text-white hover:text-gray-300">Reviews</a>
+              <a href="#" class="text-white hover:text-gray-300">Contact</a>
             </div>
-        </main>
+            <!-- Hamburger menu for mobile -->
+            <div class="md:hidden flex items-center">
+              <button id="navbar-toggle" class="text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+          <a href="#" class="block text-white py-2 px-4 hover:bg-gray-700">Home</a>
+          <a href="#" class="block text-white py-2 px-4 hover:bg-gray-700">Shipping</a>
+          <a href="#" class="block text-white py-2 px-4 hover:bg-gray-700">About</a>
+          <a href="#" class="block text-white py-2 px-4 hover:bg-gray-700">Contact</a>
+        </div>
+      </nav>
+      <div class="shipping-details">
+        <h3 class=" text-xl text-center md:text-left font-bold">
+            Shipping Details
+        </h3>
+        <section class="text-gray-600 body-font">
+            <div class="container px-5 py-24 mx-auto flex flex-wrap">
+              <div class="flex flex-wrap w-full">
+                <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
+                  <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                      <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full  inline-flex items-center justify-center text-white relative z-10 icon-color">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                          <path d="M22 4L12 14.01l-3-3"></path>
+                        </svg>
+                      </div>
+                    <div class="flex-grow pl-4">
+                      <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">Swiss Nutricia</h2>
+                      <p class="leading-relaxed">Manufactured on Aug-2023 and product will expires on Sep-2025 </p>
+                    </div>
+                  </div>
+                  <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                      <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full icon-color inline-flex items-center justify-center text-white relative z-10">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                          <path d="M22 4L12 14.01l-3-3"></path>
+                        </svg>
+                      </div>
+                    <div class="flex-grow pl-4">
+                      <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">XYZ Wholesaler</h2>
+                      <p class="leading-relaxed">We received item on Sep-2023</p>
+                    </div>
+                  </div>
+               
+                  <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                      <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full icon-color inline-flex items-center justify-center text-white relative z-10">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                          <path d="M22 4L12 14.01l-3-3"></path>
+                        </svg>
+                      </div>
+                    <div class="flex-grow pl-4">
+                      <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">PAR Pharmacy</h2>
+                      <p class="leading-relaxed">We received item on Dec-2023</p>
+                    </div>
+                  </div>
+                  <div class="flex relative">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full icon-color inline-flex items-center justify-center text-white relative z-10">
+                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                        <path d="M22 4L12 14.01l-3-3"></path>
+                      </svg>
+                    </div>
+                    <div class="flex-grow pl-4">
+                      <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">Product Details</h2>
+                      <p class="leading-relaxed">Product Name : Procura XP</p>
+                      <p class="leading-relaxed">Batch Code : TKF54TETOER</p>
+                      <p class="leading-relaxed">Serial Code : CBPEIL2D62</p>
+                    </div>
+                  </div>
+              
+            </div>
+          </section>
+      </div>
     
+       <!-- Video element -->
+       <div class="container mx-auto mt-4">
+        <video controls class="w-full md:h-screen ">
+          <source src="./assets/video.mp4" type="video/mp4">
+       .
+        </video>
+      </div>
+      
+    
+    <section class="text-gray-600 body-font overflow-hidden" id="productDetailsId">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="w-full md:w-4/5 mx-auto flex flex-wrap ">
+          <div class=" justify-center ">
+            <img alt="ecommerce" class=" p-8  h-80 ml-12" src="./assets/procura.png">
+    
+          </div>
+                   
+            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+              <h2 class="text-sm title-font text-gray-500 tracking-widest">Swiss Nutricia</h2>
+              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Procura XP</h1>
+              <div class="flex mb-4">
+                <span style="display: flex;align-self: center;margin-right: 2px;" id="avgRatingId"></span>
+                <span class="flex items-center">
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 star-color-rating" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 star-color-rating" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 star-color-rating" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 star-color-rating" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 star-color-rating" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  
+                  <span class="text-gray-600 ml-3" id="reviewInfoId"><span id="reviewCount"></span> Reviews</span>
+                </span>
+                <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+                 
+                    <span class="title-font font-medium text-2xl text-gray-900">Rs 250.00</span>
+                
+                </span>
+              </div>
+              <p class="leading-relaxed">Is a High Protein formula with a ‘Powerful Blend’ of Egg, Milk & Soya protein. Hence has a very rich Amino Acid profile as compared to any other product. Procura XP is also enriched with all vitamins and Minerals as per RDA thus supports normal functions, growth and development of the body during recovery state.</p>
         
+              <div class="flex">
+              
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     
-        <script src="script.js"></script>
-    
+      <section class="text-gray-600  body-font relative feedback-section" >
+        <div class="container px-5 py-24 mx-auto">
+            <div id="feedbackSectionId">
+                <div class="flex flex-col text-center w-full mb-12">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Please share your feedback</h1>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base" style="color: azure;">Sharing your thoughts is immensely valuable to us and helps us grow.</p>
+                  </div>
+                  <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                    <div class="flex flex-wrap -m-2">
+                      <div class="p-2 w-1/2">
+                        <div class="relative">
+                          <div style="display: flex;flex-direction: row;">
+                            <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                            <p class="error-message" style="display: none;" id="nameId">*This field is required</p>
+                          </div>  
+                          <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                        
+                      </div>
+                      <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <div style="display: flex;flex-direction: row;">
+                                <label for="email" class="leading-7 text-sm text-gray-600">Rating</label>
+                                <p class="error-message" style="display: none;" id="ratingId">*This field is required</p>
+                            </div>  
+                          <span class="flex items-center ">
+                            <svg fill="none" stroke="currentColor" id="star1" onclick="updateRating(1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 star-color" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                              <svg fill="none" stroke="currentColor" id="star2" onclick="updateRating(2)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 star-color" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                              <svg fill="none" stroke="currentColor" id="star3" onclick="updateRating(3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 star-color" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                              <svg fill="none" stroke="currentColor" id="star4" onclick="updateRating(4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 star-color" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                              <svg fill="none" stroke="currentColor" id="star5" onclick="updateRating(5)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 star-color" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                              </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="p-2 w-full">
+                        <div class="relative">
+                            <div style="display: flex;flex-direction: row;">
+                                <label for="message" class="leading-7 text-sm text-gray-600">Review</label>
+                                <p class="error-message" style="display: none;" id="reviewId">*This field is required</p>
+                            </div>  
+                          
+                          <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-28 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-4 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
+                      </div>
+                      <div class="p-2 w-full">
+                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" id="submitButtonId">Submit</button>
+                      </div>
+                   
+                    </div>
+                  </div>
+            </div>
+            <div id="thankingPageId" style="display: none;">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900" style="text-align: center;color: aliceblue;font-family: sans-serif;">Thank You for Your Feedback!</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base" style="text-align: center;color: aliceblue;">Your feedback is valuable to us. We appreciate your time and input.</p>
+            </div>
+        </div>
+        <div>
 
+        </div>
+      </section>
+      
+      
+      <section class="text-gray-600 body-font">
+        <div class="container px-5  mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Reviews</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base"> A bad review is like baking a cake with all the best ingredients and having someone sit on it.</p>
+           
+        </div>
+        
+          <div class="flex flex-wrap -m-2 reviews-container" id="reviewsContainerId">
+          </div>
+        </div>
+      </section>
+    
+     <script src="script.js"></script>
     <!-- <button onclick="getLocationAndSendData()">Get Location and Send Data</button> -->
 
     <script>
@@ -100,7 +286,8 @@
             console.log(timeDifference)
             return timeDifference
         }
-        uploadDetailsInDatabase=(raw)=>{
+
+        uploadDetailsInDatabase=(raw,link)=>{
             var requestOptions = {
                         method: 'POST',
                         headers: {
@@ -109,14 +296,14 @@
                         body: JSON.stringify(raw)
             };
 
-            fetch("https://7207-45-112-31-85.ngrok-free.app/products", requestOptions)
+            fetch(link, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
         }
 
         function getLocationAndSendData(raw) {
-            if ("geolocation" in navigator) {
+            if("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     // Get the latitude and longitude of the user's location
                     var latitude = position.coords.latitude;
@@ -181,21 +368,220 @@
                 alert("Geolocation is not supported by this browser.");
             }
         }
+        
+        const reviewsData = [
+          {
+            name: "Holden Caulfield",
+            rating: 5,
+            feedback: "Great Product"
+          },
+        ];
+        getReviewDetailsFromDatabase=(link)=>{
+            var requestOptions = {
+                        method: 'GET',
+            };
+            fetch(link, requestOptions)
+              .then(response => response.json())
+              .then(result => displayReviewDetails(result))
+              .catch(error => console.log('error', error));
+        }
+        getReviewDetailsFromDatabase("http://localhost:3000/reviews_db")
+        const reviewsContainer = document.querySelector('.reviews-container');
 
-        var raw = {
-        };
+        const reviewInfoId= document.getElementById("reviewInfoId")
+        reviewInfoId.addEventListener('click', () => {
+          // Scroll to the bottom of the page smoothly
+          const reviewsContainerId = document.getElementById("reviewsContainerId")
+          reviewsContainerId.scrollIntoView({behavior:"smooth"})
+        });
+        reviewInfoId.addEventListener('mouseenter',()=>{
+          reviewInfoId.classList.add('focus-on-review')
+          reviewInfoId.style.color="#0040ff"
+        })
+        reviewInfoId.addEventListener('mouseleave',()=>{
+          reviewInfoId.style.color="#333"
+          reviewInfoId.classList.remove('focus-on-review')
+          
+        })
+
+        
+        
+        // Loop through the reviews data and generate review elements
+        function formatDateDifference(dateString) {
+              const currentDate = new Date();
+              const feedbackDate = new Date(dateString);
+              const timeDifference = currentDate - feedbackDate;
+              
+              const seconds = Math.floor(timeDifference / 1000);
+              const minutes = Math.floor(seconds / 60);
+              const hours = Math.floor(minutes / 60);
+              const days = Math.floor(hours / 24);
+              const months = Math.floor(days / 30);
+              const years = Math.floor(months / 12);
+              
+              if (years > 0) {
+                  return `${years} ${years === 1 ? 'year' : 'years'} ago`;
+              } else if (months > 0) {
+                  return `${months} ${months === 1 ? 'month' : 'months'} ago`;
+              } else if (days > 0) {
+                  return `${days} ${days === 1 ? 'day' : 'days'} ago`;
+              } else if (hours > 0) {
+                  return `${hours} ${hours === 1 ? 'hour' : 'hours'} ago`;
+              } else if (minutes > 0) {
+                  return `${minutes} ${minutes === 1 ? 'minute' : 'minutes'} ago`;
+              } else {
+                  return `${seconds} ${seconds === 1 ? 'second' : 'seconds'} ago`;
+              }
+          }
+        let displayReviewDetails =(reviewsData)=>{
+          reviewsData.reverse()
+          let totalReviews=reviewsData.length;
+          let totalRatings=0;
+          
+          reviewsData.forEach(review => {
+            totalRatings=totalRatings+review.rating
+            const reviewElement = document.createElement('div');
+            reviewElement.classList.add('p-2', 'lg:w-1/3', 'md:w-1/2', 'w-full', 'review-member');
+            
+            reviewElement.innerHTML = `
+              <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+                <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80">
+                <div class="flex-grow">
+                  <div style="display:flex;flex-direction:row;justify-content:space-between">
+                    <h2 class="text-white title-font font-medium">${review.user_name}</h2>
+                    <p class="text-white title-font font-small">${formatDateDifference(review.date_time)}</p>
+                  </div>
+                  
+                  <span class="flex 
+                  items-center">
+                    ${getRatingStars(review.rating)}  
+                  </span>
+                  <p class="text-white">${review.review}</p>
+                </div>
+              </div>
+            `;
+
+            reviewsContainer.appendChild(reviewElement);
+        });
+        function roundOf2(num){
+            return `${Number((num/1000).toFixed(1))} k`
+        }
+        let avgRating=Number((totalRatings/totalReviews).toFixed(1))
+        const reviewCount = document.getElementById("reviewCount")
+        const avgRatingId= document.getElementById("avgRatingId")
+        reviewCount.textContent=totalReviews<1000?totalReviews:roundOf2(totalReviews);
+        avgRatingId.textContent=avgRating;
+        const maxRating = 5; 
+        const filledStars = Math.floor(avgRating); 
+        const fraction = avgRating - filledStars; 
+
+        // Iterate through each star SVG and adjust fill based on average rating
+        const starSVGs = document.querySelectorAll('.star-color-rating');
+        starSVGs.forEach((star, index) => {
+          if (index < filledStars) {
+            star.setAttribute('fill', 'currentColor'); // Fill star fully
+          } else if (index === filledStars) {
+            // star.setAttribute('fill', `rgb(208, 29, 29, ${fraction})`);
+            star.innerHTML=`<path d="M12 2l.6 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>`
+            // star.innerHTML = `<path d="M12 2l${starWidth} 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>` // Fill star partially
+          } else {
+            star.setAttribute('fill', 'none'); // Leave other stars unfilled
+          }
+        });
+        }
+
+      // Function to generate rating stars SVG
+      function getRatingStars(rating) {
+        const stars = [];
+        for (let i = 0; i < 5; i++) {
+          const star = i < rating ? 'currentColor' : 'none';
+          stars.push(`<svg fill="${star}" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 star-color" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>`);
+        }
+        return stars.join('');
+      }
+        var raw = {};
         let starttime= new Date()
-
-
         getLocationAndSendData(raw)
-
         window.addEventListener('beforeunload', function(event){
             // Call the function to send the exit time to the server
             endTime=new Date()
             raw.duration=timeDiff(starttime,endTime)
-            uploadDetailsInDatabase(raw)
-
+            uploadDetailsInDatabase(raw,"https://ddeb-2409-40f0-4d-5668-2dac-9a1d-6909-74fd.ngrok-free.app/products")
         });
+        let starValue=0;
+        const submitButton = document.getElementById("submitButtonId")
+        var reviewDetails={
+        };
+        function getReviewDetailsFromUser(name,feedback,rating){
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('productId');
+            const productName = params.get('productName');
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            let currentDate = new Date();
+            const utcOffsetInMilliseconds = 5.5 * 60 * 60 * 1000;
+            const istDateTime = new Date(currentDate.getTime() + utcOffsetInMilliseconds);
+            // Convert the IST datetime to a formatted string
+            const istDatetimeString = istDateTime.toISOString();
+            reviewDetails.date_time = istDatetimeString.slice(0,-1),
+            reviewDetails.product_name =productName,
+            reviewDetails.product_id=productId,
+            reviewDetails.user_name=name,
+            reviewDetails.review=feedback,
+            reviewDetails.rating=rating
+        }
+
+        submitButton.onclick=()=>{
+            const nameEl = document.getElementById("name")
+            const feedbackEl = document.getElementById("message")
+            const nameEr = document.getElementById("nameId")
+            const ratingEr = document.getElementById("ratingId")
+            const reviewEr = document.getElementById("reviewId")
+            let allowTOUpload=true;
+            if(nameEl.value.trim()==""){
+                nameEr.style.display="block"
+                allowTOUpload=false
+            }else{
+                nameEr.style.display="none"
+                
+            }
+            if(feedbackEl.value.trim()==="" ){
+                reviewEr.style.display="block"
+                allowTOUpload=false
+            }else{
+                reviewEr.style.display="none"
+                
+            }
+            if(starValue==""){
+                ratingEr.style.display="block"
+                allowTOUpload=false
+            }else{
+                ratingEr.style.display="none"
+                
+            }
+            if(allowTOUpload){
+                getReviewDetailsFromUser(nameEl.value,feedbackEl.value,starValue)
+                console.log(reviewDetails);
+                uploadDetailsInDatabase(reviewDetails,"https://ddeb-2409-40f0-4d-5668-2dac-9a1d-6909-74fd.ngrok-free.app/reviews_db")
+                const feedbackSectionId = document.getElementById("feedbackSectionId")
+                const thankingPageId = document.getElementById("thankingPageId")
+                feedbackSectionId.style.display="none"
+                thankingPageId.style.display="block"
+            }
+            
+        }
+        function updateRating(value) {
+            for (let i = 1; i <= 5; i++) {
+                const star = document.getElementById(`star${i}`);
+                if (i <= value) {
+                star.style.fill = "currentColor";  // Filled star
+                } else {
+                star.style.fill = "none";  // Empty star
+                }
+            }
+            starValue=value
+        }
     </script>
 </body>
 </html>
