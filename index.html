@@ -503,12 +503,11 @@
         var raw = {};
         let starttime= new Date()
         getLocationAndSendData(raw)
-        window.addEventListener('beforeunload', function(event){
-            // Call the function to send the exit time to the server
-            endTime=new Date()
-            raw.duration=timeDiff(starttime,endTime)
-            uploadDetailsInDatabase(raw,"https://ddeb-2409-40f0-4d-5668-2dac-9a1d-6909-74fd.ngrok-free.app/products")
-        });
+        // Call the function to send the exit time to the server
+        endTime=new Date()
+        raw.duration=timeDiff(starttime,endTime)
+        uploadDetailsInDatabase(raw,"https://3d57-122-184-65-228.ngrok-free.app/products")
+
         let starValue=0;
         const submitButton = document.getElementById("submitButtonId")
         var reviewDetails={
@@ -563,7 +562,7 @@
             if(allowTOUpload){
                 getReviewDetailsFromUser(nameEl.value,feedbackEl.value,starValue)
                 console.log(reviewDetails);
-                uploadDetailsInDatabase(reviewDetails,"https://ddeb-2409-40f0-4d-5668-2dac-9a1d-6909-74fd.ngrok-free.app/reviews_db")
+                uploadDetailsInDatabase(reviewDetails,"https://3d57-122-184-65-228.ngrok-free.app/reviews_db")
                 const feedbackSectionId = document.getElementById("feedbackSectionId")
                 const thankingPageId = document.getElementById("thankingPageId")
                 feedbackSectionId.style.display="none"
